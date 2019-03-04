@@ -19,6 +19,7 @@ template <- function(ylabel = NULL, yvariable = NULL, SEvariable =  NULL, xlabel
     scale_fill_manual(values = c("gray", "black"))+ 
     scale_color_manual(values = c("gray", "black"), name = "Sampling Year", labels = c("2017", "1995"), guide = guide_legend(reverse = TRUE)) +
     labs(x =  xlabel, y = ylabel)  + 
+    geom_smooth(method = lm)
     geom_errorbar(data = SE_chrono_data, mapping = aes(x = SE_chrono_data$Age, ymin = yvariable- SEvariable, 
            ymax = yvariable + SEvariable), width = 0.1)+ facet_grid(SE_chrono_data$Elevation) + 
     coord_trans(x = "log10") + theme_classic() +
